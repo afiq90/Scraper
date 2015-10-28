@@ -21,7 +21,7 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= movie.title %></td>
+        <td><%= link_to movie.title, movie %></td>
         <td><%= movie.hotness %></td>
         <td><%= image_tag movie.image_url, class: "thumbnail" %></td>
         <td><%= movie.synopsis %></td>

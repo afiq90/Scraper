@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
   resources :movies
   resources :movies
   root 'pages#home'
