@@ -5,7 +5,18 @@ module Movies
  		desc "return all movie data"
 
  		get do
+ 			authenticate!
  			Movie.all
+ 		end
+
+ 		desc "return movie data by id"
+
+ 		params do
+ 			requires :id, type: String
+ 		end
+
+ 		get ':id' do
+ 			Movie.find(params[:id])
  		end
 
  		desc "create a new movie"
@@ -17,6 +28,7 @@ module Movies
  		end
 
  		post do
+ 			authenticate!
  			Movie.create!({
  				title:params[:title],
  				image_url:params[:image_url],
@@ -38,6 +50,7 @@ module Movies
  		end
 
  		put ':id' do
+ 			authenticate!
  			Movie.find(params[:id]).update({
  				genre:params[:genre],
  				director:params[:director],
@@ -45,6 +58,17 @@ module Movies
  				rating:params[:rating],
  				hotness:params[:hotness]
  			})
+ 		end
+
+ 		desc "Delte movie by id"
+
+ 		params do 
+ 			requires :id, type: String
+ 		end
+
+ 		delete ':id' do
+ 			authenticate!
+ 			Movie.find(params[:id]).destroy!
  		end
 
  	end

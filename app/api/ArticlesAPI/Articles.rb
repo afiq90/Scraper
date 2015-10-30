@@ -1,10 +1,22 @@
 module Articles	
 	class ArticleData < Grape::API
 
+		
 		resource :article_data do
+
 			desc "Return all article data"
 			get do
+				authenticate!
 				Article.all
+			end
+
+			desc "Return article by id"
+			params do
+				requires :id, type: String
+			end
+
+			get ':id' do
+				Article.find(params[:id])
 			end
 
 			desc "create a new article"
@@ -17,6 +29,7 @@ module Articles
 
 			#This takes care of creating article
 			post do
+				authenticate!
 				Article.create!({
 					title:params[:title],
 					content:params[:content],
@@ -33,6 +46,7 @@ module Articles
 			end
 
 			put ':id' do
+				authenticate!
 				Article.find(params[:id]).update({
 					content:params[:content],
 					image_url:params[:image_url]
@@ -46,9 +60,9 @@ module Articles
 			end
 
 			delete ':id' do
+				authenticate!
 				Article.find(params[:id]).destroy!
 			end
-
 
 		end
 
