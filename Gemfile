@@ -55,4 +55,5 @@ gem "validate_url"
 gem "nokogiri"
 gem "utf8_utils"
 gem 'grape'
+gem "cancan"
 
