@@ -37,7 +37,7 @@
         <% if can? :update, movie %>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
         <% end %>
-        <% if can? :delete, movie %>
+        <% if can? :destroy, movie %>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>

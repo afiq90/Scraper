@@ -30,10 +30,12 @@ class Ability
             movie.user == user
         end
 
+        can :read, Article do |article|
+            article.user == user
+        end
+
         can :create, Article
         can :create, Movie
-       # can :read, Article
-       # can :read, Movie
 
     end
 
