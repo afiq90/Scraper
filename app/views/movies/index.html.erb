@@ -21,6 +21,7 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
+        <% if can? :read, movie %>
         <td><%= link_to movie.title, movie %></td>
         <td><%= movie.hotness %></td>
         <td><%= image_tag movie.image_url, class: "thumbnail" %></td>
@@ -31,8 +32,14 @@
         <td><%= movie.release_date %></td>
         <td><%= movie.runtime %></td>
         <td><%= link_to 'Show', movie %></td>
+        <% end %>
+
+        <% if can? :update, movie %>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+        <% end %>
+        <% if can? :delete, movie %>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

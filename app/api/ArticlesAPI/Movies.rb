@@ -1,12 +1,16 @@
 module Movies
  class MovieData < Grape::API
+  #include CanCan::Ability
 
  	resource :movie_data do
  		desc "return all movie data"
 
  		get do
  			authenticate!
- 			Movie.all
+ 		#	if can? :read, @movie
+ 			  current_user.movies
+ 			 # Movie.all 
+ 		 #   end
  		end
 
  		desc "return movie data by id"

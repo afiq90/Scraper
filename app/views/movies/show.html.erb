@@ -45,6 +45,7 @@
   <%= @movie.runtime %>
 </p>
 
-
+<% if can? :update, @movie %>
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
+<% end %>
