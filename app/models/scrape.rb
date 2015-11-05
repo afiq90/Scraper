@@ -28,11 +28,15 @@ class Scrape
 			doc = Nokogiri::HTML(open(url))
 			doc.css('script').remove
 			self.title = doc.css(".featured--post-bg .post--title").text
-			self.content = doc.css(".single--content").text.tidy_bytes
+			#self.content = doc.css(".single--content").text.tidy_bytes
+			# use .children to get html tag, then use auto_html gem to display this shit.
+			self.content = doc.css(".single--content").children
 			self.published_date = doc.at("//time").text.to_date
-			self.author = doc.at("/html/body/div[5]/div/div/div[2]/div"),
+			self.author = doc.at("/html/body/
+				div[5]/div/div/div[2]/div"),
 			self.image_url = doc.at("//img[@itemprop ='image']")['src']
-			puts self.image_url
+			#puts self.image_url
+			#puts self.content
 
 			#vocket.at("//iframe")['src']
 			#doc.at("/html/body/div[6]/div/div[1]/div/div/p[3]/img")
