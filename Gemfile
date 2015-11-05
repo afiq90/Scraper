@@ -44,10 +44,6 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-group :production do
-  gem 'pg'
-end
-
 # Bootstrap
 #gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'twitter-bootstrap-rails'
@@ -62,3 +58,4 @@ gem "nokogiri"
 gem "utf8_utils"
 gem 'grape'
 gem "cancan"
+gem 'pg'
